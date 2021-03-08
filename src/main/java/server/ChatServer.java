@@ -10,9 +10,11 @@ public class ChatServer {
 
     //Call server with arguments like this: 0.0.0.0 8088 logfile.log
     public static void main(String[] args) throws UnknownHostException {
+        //TODO: Lav client-klasse
         String ip = "localhost";
         int port = 8088;
         String logFile = "log.txt";  //Do we need this
+
 
         try {
             if (args.length == 3) {
