@@ -21,7 +21,8 @@ class ClientHandlerTest {
         String name = "kurt";
         allMessage = new ArrayBlockingQueue<>(250);
         String userInput = "SEND#Lone#hej fra kurt";
-        PrintWriter pw = new PrintWriter(System.out);
+        allMessage.add(userInput);
+        PrintWriter pw = new PrintWriter(System.out,true);
         BufferedReader br = new BufferedReader(new StringReader(userInput));
 
         cl = new ClientHandler(name,br,pw,allMessage);
@@ -31,7 +32,7 @@ class ClientHandlerTest {
     @Test
     void testClientSendMsg() throws InterruptedException {
         testThread.start();
-        testThread.join();
+        //testThread.join();
         System.out.println(allMessage);
     }
 
