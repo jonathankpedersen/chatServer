@@ -1,17 +1,34 @@
 package server;
 
-public class Client {
-    private String userName;
-    private String ipAddress;
-    private java.net.Socket socket = null;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
-    public Client(String userName, String ipAddress, java.net.Socket socket){
-        this.userName = userName;
-        this.ipAddress = ipAddress;
-        this.socket = socket;
+public class Client {
+    public static void main(String[] args) {
+        Client client = new Client();
+        client.connectToServer();
+
     }
-    public java.net.Socket getSocket(){
-        return this.socket;
+
+    private void connectToServer() {
+        //Create socket connection to server
+        try {
+            Socket socket = new Socket("localhost", 8088);
+            //Instantiate reader and writer
+            PrintWriter writeToServer = new PrintWriter(socket.getOutputStream());
+            BufferedReader readFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            //Send : CONNECT#Louise
+            writeToServer.println("CONNECT#Louise");
+            socket.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+
+
     }
 
 }

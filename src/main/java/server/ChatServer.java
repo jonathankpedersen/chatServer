@@ -17,7 +17,6 @@ BlockingQueue<String> allMessages = new ArrayBlockingQueue<String>(250);
 
     //Call server with arguments like this: 0.0.0.0 8088 logfile.log
     public static void main(String[] args) throws UnknownHostException {
-        //TODO: Lav client-klasse
 
 
         ChatServer chatserver = new ChatServer();
@@ -36,7 +35,7 @@ BlockingQueue<String> allMessages = new ArrayBlockingQueue<String>(250);
             //Get reader og writer til client
             PrintWriter pw = new PrintWriter(client.getOutputStream(), true);
             BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            //CONNECT#kurt client skiver dette
+            //CONNECT#kurt client skriver dette
             //Skal bruge navnet kurt til at gemme clientsocket i et hashmap
             String name = "kurt";
             String input = br.readLine();
