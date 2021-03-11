@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
@@ -14,11 +15,14 @@ public class ClientHandler implements Runnable{
     PrintWriter pw;
     BlockingQueue<String> allMessage;
     String name;
+
+
 public ClientHandler(String name, BufferedReader br, PrintWriter pw, BlockingQueue<String> allMessage){
     this.br = br;
     this.pw = pw;
     this.allMessage = allMessage;
     this.name = name;
+
 }
 
 
@@ -30,6 +34,8 @@ public ClientHandler(String name, BufferedReader br, PrintWriter pw, BlockingQue
                 //case "CONNECT":connecter(valgSplit[1]);break;
                 case "SEND":sendMessage(valgSplit[1], valgSplit[2]);break;
                 case "CLOSE": close(valgSplit[1]); break;
+                //default: String output = "CLOSE#" + name + "#1"; allMessage.add(output);
+                default: valg = "bye";
             }
         }
     }
