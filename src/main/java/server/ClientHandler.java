@@ -27,15 +27,16 @@ public ClientHandler(String name, BufferedReader br, PrintWriter pw, BlockingQue
 
 
     public void protocol() throws IOException{
-        String valg = br.readLine();
-        String[] valgSplit = valg.split("#");
-        while(!valg.equalsIgnoreCase("bye")){
+    boolean go = true;
+        while (go){
+            String valg = br.readLine();
+            String[] valgSplit = valg.split("#");
             switch(valgSplit[0]){
                 //case "CONNECT":connecter(valgSplit[1]);break;
                 case "SEND":sendMessage(valgSplit[1], valgSplit[2]);break;
                 case "CLOSE": close(valgSplit[1]); break;
                 //default: String output = "CLOSE#" + name + "#1"; allMessage.add(output);
-                default: valg = "bye";
+                default: go = false;
             }
         }
     }
@@ -47,7 +48,7 @@ public ClientHandler(String name, BufferedReader br, PrintWriter pw, BlockingQue
     }
 
     private void sendMessage(String user, String message) {
-    String output = "SEND#" + user + ",Lone#hej" ;
+    String output = "SEND#" + name + "," + user + "#" + message ;
     allMessage.add(output);
 
 
