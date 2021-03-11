@@ -22,7 +22,6 @@ public ClientHandler(String name, BufferedReader br, PrintWriter pw, BlockingQue
 }
 
 
-
     public void protocol() throws IOException{
         String valg = br.readLine();
         String[] valgSplit = valg.split("#");
@@ -42,6 +41,8 @@ public ClientHandler(String name, BufferedReader br, PrintWriter pw, BlockingQue
     }
 
     private void sendMessage(String user, String message) {
+    String output = "SEND#" + user + ",Lone#hej" ;
+    allMessage.add(output);
 
 
     }
